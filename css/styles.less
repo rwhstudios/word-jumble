@@ -1,0 +1,229 @@
+// VARIABLES
+@blue:#0082C8;
+@orange:#ee7623;
+@green:#c1d32f;
+@gray:#cccccc;
+@correct: #6aaa64;
+//@present:yellow;
+@absent:gray;
+@dark-blue:#00446a;
+
+// BASIC STYLES
+* {
+  font-family: "Futura W02 Book","Open Sans",sans-serif;
+}
+h1, h2, strong {
+  font-family: "Futura W01 Heavy", "Open Sans", sans-serif;
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+html {
+  background: @dark-blue;
+}
+body {
+  background-image: url('../images/bg-pattern.png');
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: bottom left;
+}
+h1 {
+    text-align: center;
+    &.title {
+      font-size: 24px;
+      color: #ffffff;
+    }
+}
+.header {
+  display: block;
+}
+.row {
+  display: flex;
+}
+.title-header {
+  align-items: center;
+  div {
+    flex:auto;
+    width:calc(100% / 3);
+  }
+}
+.color-bars {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  gap: 0.5em;
+  justify-content: space-evenly;
+  background: #ffffff;
+  padding-bottom: .5em;
+  div {
+    flex: auto;
+    height: 1.25em;
+  }
+  #bar--blue {
+    background: @blue;
+  }
+  #bar--green {
+    background: @green;
+  }
+  #bar--orange {
+    background: @orange;
+  }
+}
+.wrapper {
+  margin: 0 8px;
+  padding: 0;
+  text-align: center;
+}
+.gameboard {
+  background: rgba(255, 255, 255, .95);
+  display: inline-block;
+  width: auto;
+  margin: auto;
+  padding: 2em 1em;
+  position: relative;
+  top: 50px;
+  border-radius: 6px;
+  #player-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  .playpause-container {
+    opacity: .5;
+    &:hover {
+      opacity: .8;
+    }
+    label {
+      display: block;
+      box-sizing: border-box;
+      width: 0;
+      height: 20px;
+      outline: none;
+      border-color: transparent transparent transparent @blue;
+      transition: 100ms all ease;
+      cursor: pointer;
+      border-style: double;
+      border-width: 0px 0 0px 20px;
+    }
+    input[type="checkbox"] {
+      position: absolute;
+      left: -9999px;
+      outline: none;
+      &:checked + label {
+        border-style: solid;
+        border-width: 10px 0 10px 20px;
+      }
+      &:focus + label {
+        //box-shadow: 0 0 5px lightblue;
+      }
+    }
+  }
+
+
+
+}
+.word-container {
+  text-align: center;
+  .jumbleText{
+    font-size: 2em;
+    label {
+      width: auto;
+      height: auto;
+      text-transform: uppercase;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+  }
+}
+
+.answer-buttons {
+  text-align: center;
+  padding-top: 4em;
+  input {
+    font-weight: bold;
+    border: 2px solid @correct;
+    color: @correct;
+    font-size: 1.25em;
+    padding: 5px 10px;
+    border-radius: 6px;
+    background: fade(@green, 20%);
+    &:hover {
+
+    }
+  }
+}
+
+.ls {
+    padding:5px;
+    border:3px solid @dark-blue;
+    color: @blue;
+    margin:5px;
+    border-radius: 2px;
+    background: #ffffff;
+}
+.correctText {
+    padding:5px;
+    border:3px solid @correct;
+    color:@correct;
+    margin:5px;
+    border-radius: 2px;
+    background-color: fade(@green, 20%);
+}
+
+
+.ui-sortable-handle {
+  display: inline-block;
+  height: auto !important;
+  animation: wiggle 2s ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+// animations
+.wiggles {
+  animation: wiggle 2s ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes wiggle {
+  0% {transform: rotate(0deg);}
+  25% {transform: rotate(-10deg);}
+  50% {transform: rotate(0deg);}
+  75% {transform: rotate(5deg);}
+  100% {transform: rotate(0deg);}
+}
+.wiggles:hover {
+  animation: wiggleHover 1s ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes wiggleHover {
+  0% {transform: rotate(-5deg);}
+  25% {transform: rotate(-20deg);}
+  //50% {transform: rotate(10deg);}
+  75% {transform: rotate(20deg);}
+  100% {transform: rotate(0deg);}
+}
+@media screen and (min-width:800px) {
+  h1 {
+    &.title {
+      font-size: 2.5em;
+    }
+  }
+  .gameboard {
+    padding: 6em 4em 3em 4em;
+  }
+  .word-container {
+    .jumbleText{
+      label {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+}

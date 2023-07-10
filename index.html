@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="header">
+        <div class="color-bars row">
+            <div id="bar--blue"></div>
+            <div id="bar--green"></div>
+            <div id="bar--orange"></div>
+        </div>
+        <div class="title-header row">
+            <div>
+                <h1 class="title">Word Jumble</h1>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- http://jsfiddle.net/JZ74V/32/ -->
+    <!-- also use https://www.elated.com/drag-and-drop-with-jquery-your-essential-guide/ -->
+    <div class="wrapper">
+        <div class="gameboard">
+            <div id="player-container">
+                <div class="playpause-container">
+                    <input type="checkbox" value="" id="playpause" name="check" onclick="toggleAudio()"/>
+                    <label for="playpause" tabindex=1></label>
+                  </div>            
+
+                <audio id="player" autoplay loop controlsList="nodownload noplaybackrate">
+                 <source src="audio/Komiku_-_13_-_Good_Fellow.mp3" type="audio/mpeg">
+                            If you're reading this, audio isn't supported. 
+                </audio>
+                
+            </div>
+            <div class="word-container">
+                <div id="jumbleWords" class="jumbleWordsWrap"></div>
+            </div>
+
+            <br/>
+            <div class="answer-buttons">
+                <input type="button" class="submit_answer" value="SOLVE!"/><br/>
+                <!--<input type="button" class="helper" onclick="fnSwap()" value="HELP"/>-->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <!--<script src="js/scripts.js" type="text/javascript"></script>-->
+    <script src="js/scripts.js" type="module"></script>
+    <script src="js/custom.js" type="module"></script>
+
+<!-- 
+    AUDIO 
+    Music: https://www.chosic.com/free-music/all/
+    https://www.chosic.com/download-audio/25477/
+-->
+
+<audio id="pop01" src="audio/pop01.mp3"></audio>
+<audio id="pop02" src="audio/pop02.mp3"></audio>
+
+<script>
+    var audio = document.getElementById("player");
+    function toggleAudio() {
+        return audio.paused ? audio.play() : audio.pause();
+    };
+</script>
+
+</body>
+</html>
